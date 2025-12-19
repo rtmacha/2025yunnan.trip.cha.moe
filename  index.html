@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>云南行程共享页</title>
+  <meta name="description" content="大理-丽江-昆明行程分享（静态页面）" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 120 120" role="presentation">
+            <defs>
+              <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#a78bfa" />
+                <stop offset="60%" stop-color="#66c7ff" />
+                <stop offset="100%" stop-color="#35d7b0" />
+              </linearGradient>
+            </defs>
+            <rect x="8" y="8" width="104" height="104" rx="36" fill="url(#logoGradient)" />
+            <path d="M20 70c15-18 42-26 63-18 8 3 16 8 25 19-26 8-78 10-88-1z" fill="rgba(255,255,255,0.5)"/>
+            <path d="M38 58l20 6-6 10 34 10-12-14 16-4c4-1 4-6-1-7l-51-13c-4-1-6 5-3 7l3 1z" fill="#fff"/>
+            <circle cx="38" cy="40" r="6" fill="#fff"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1 id="tripTitle">行程</h1>
+          <p id="tripSubtitle" class="muted"></p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <div class="share-dropdown">
+          <button class="btn ghost share-trigger" id="btnShare">分享 / 复制</button>
+          <div class="share-menu" id="shareMenu">
+            <button type="button" data-share="wechat">
+              <span>分享到微信</span>
+              <small>扫码或系统分享</small>
+            </button>
+            <button type="button" data-share="qq">
+              <span>分享到 QQ</span>
+              <small>好友 / 群聊</small>
+            </button>
+            <button type="button" data-share="copy">
+              <span>复制分享链接</span>
+              <small>通用链接</small>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card hero-card">
+      <div class="hero-text">
+        <p class="eyebrow" id="heroEyebrow">YUNNAN / 旅拍</p>
+        <h2 id="heroTitle">云海花田里的慢旅行</h2>
+        <p class="hero-desc" id="heroDesc">
+          热爱光影、咖啡与洱海的治愈感。我们把一路的山川湖海、集市和风物都收纳进这份卡片式行程。
+          带上朋友或家人，一起感受云南柔软时光。
+        </p>
+        <div class="hero-badges">
+          <span class="pill" id="heroBadgeMain">
+            <svg class="pill-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M2.5 13L21 7l-3.5 6 3.5 6-18.5-6 6-2-6-2z" />
+            </svg>
+            <span id="heroBadgeMainText">大理 · 丽江 · 昆明</span>
+          </span>
+          <span class="pill soft" id="heroBadgeSub">
+            <svg class="pill-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3a7 7 0 00-7 7c0 5 7 11 7 11s7-6 7-11a7 7 0 00-7-7zm0 9a2 2 0 110-4 2 2 0 010 4z" />
+            </svg>
+            <span id="heroBadgeSubText">最佳 6-8 日 | 18-26℃</span>
+          </span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img id="heroImage" src="./images/hero-yunnan.jpg" alt="大理洱海旅拍" loading="lazy" />
+        <div class="hero-floating card" id="weatherCard" aria-live="polite">
+          <p id="weatherStatus">正在获取天气...</p>
+          <strong id="weatherTemp">--</strong>
+          <span id="weatherMeta" class="muted">定位中</span>
+          <span id="weatherTip" class="hero-tip">旅途穿搭建议加载中</span>
+          <small id="weatherLocation"></small>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <aside class="card">
+        <h2 class="with-icon">
+          <svg class="section-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2C8.686 2 6 4.686 6 8c0 4.5 6 10 6 10s6-5.5 6-10c0-3.314-2.686-6-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z"/>
+          </svg>
+          概览
+        </h2>
+        <div id="overview" class="kv"></div>
+
+        <div class="divider"></div>
+        <h2 class="with-icon">
+          <svg class="section-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 12l9-8 9 8v8h-6v-5H9v5H3z"/>
+          </svg>
+          住宿区域建议
+        </h2>
+        <div id="stayAdvice" class="stack"></div>
+
+        <div class="divider"></div>
+        <h2 class="with-icon">
+          <svg class="section-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 3l4 2 4-2 4 4-4 2v10H8V9L4 7z" />
+          </svg>
+          穿衣指南
+        </h2>
+        <div id="packingAdvice" class="stack"></div>
+      </aside>
+
+      <section class="card">
+        <div class="section-head">
+          <h2 class="with-icon">
+            <svg class="section-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 5h2V3h2v2h8V3h2v2h2a2 2 0 012 2v11a2 2 0 01-2 2H4a2 2 0 01-2-2V7a2 2 0 012-2zm0 4v9h16V9H4zm4 3h4v4H8v-4z"/>
+            </svg>
+            逐日行程
+          </h2>
+          <div class="chips" id="chips"></div>
+        </div>
+
+        <div id="timeline" class="timeline"></div>
+      </section>
+    </section>
+
+    <section class="card moodboard">
+      <div class="section-head">
+        <h2 class="with-icon">
+          <svg class="section-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6h3l1-2h8l1 2h3a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2zm8 3.5A2.5 2.5 0 109 12a2.5 2.5 0 003-2.5z"/>
+          </svg>
+          旅途灵感卡
+        </h2>
+        <p class="muted small">喜欢贴纸、照片墙和纪念票根，就把它们放进这里吧。</p>
+      </div>
+      <div class="moodboard-grid" id="moodboardGrid"></div>
+      <div class="moodboard-overlay" id="moodboardOverlay">
+        <div class="overlay-content">
+          <div class="overlay-text">
+            <strong>还有更多旅途灵感</strong>
+            <span>展开即可加载更多胶片风照片</span>
+          </div>
+          <button class="btn reveal-btn" id="btnRevealMoodboard" type="button">展开灵感墙</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer muted">
+      <span id="footerNote"></span>
+    </footer>
+  </main>
+
+  <div class="share-modal" id="wechatModal" role="dialog" aria-modal="true" aria-labelledby="wechatModalTitle">
+    <div class="share-modal-card">
+      <p id="wechatModalTitle">使用微信扫码分享行程</p>
+      <img id="wechatQRImage" src="" alt="微信分享二维码" />
+      <p class="muted small">如在手机上，可直接使用系统分享面板选择微信</p>
+      <button class="btn ghost" id="btnCloseWechat" type="button">关闭</button>
+    </div>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>
